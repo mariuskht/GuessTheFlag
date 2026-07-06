@@ -5,6 +5,7 @@
 //  Created by Marius on 28.06.26.
 //
 
+import AudioToolbox
 import SwiftUI
 internal import Combine
 
@@ -51,6 +52,8 @@ struct ContentView: View {
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity)
                                 .font(.largeTitle.weight(.semibold))
+                                .lineLimit(nil)
+                                .minimumScaleFactor(0.5)
                                 .padding(.horizontal)
                         }
                         
@@ -104,16 +107,18 @@ struct ContentView: View {
             }
             .toolbar{
                 ToolbarItem(placement: .navigationBarLeading) {
-                        Text("Flaggit!")
-                            .font(.title2.bold())
-                            .foregroundStyle(.white)
-                            .frame(minWidth: 100)
+                    Image("AppLogo")
+                        .resizable()
+                        .scaledToFit()
                     }
+                .sharedBackgroundVisibility(.hidden)
                 ToolbarItem{
                     Text(timeString)
                         .font(.largeTitle.monospacedDigit())
+                        .foregroundStyle(.white)
                         .frame(minWidth: 100)
                 }
+                .sharedBackgroundVisibility(.hidden)
             }
             .alert(resultTitle, isPresented: $showingResult) {
                 Button("Exit Game") {
@@ -140,12 +145,15 @@ struct ContentView: View {
     
     func flagTapped(_ number: Int) {
         selectedAnswer = number
+        
+        if number == correctAnswer {
+            AudioServicesPlaySystemSound(1054)
+            score+=1
+        } else {
+            AudioServicesPlaySystemSound(1053)
+            score -= 2
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            if number == correctAnswer {
-                score+=1
-            } else {
-                score -= 2
-            }
             askQuestion()
         }
         
