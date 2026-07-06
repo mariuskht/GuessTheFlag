@@ -1,53 +1,18 @@
 {
   "sourceLanguage" : "de",
   "strings" : {
-    "Congratulations! You've won!" : {
-      "extractionState" : "stale",
+    "Exit Game" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Glückwunsch! Du hast gewonnen!"
+            "value" : "Spiel beenden"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Congratulations! You’ve won!"
-          }
-        }
-      }
-    },
-    "Continue" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Weiter"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Continue"
-          }
-        }
-      }
-    },
-    "Correct" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Korrekt"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Correct"
+            "value" : "Exit Game"
           }
         }
       }
@@ -75,21 +40,33 @@
       }
     },
     "Score" : {
-
-    },
-    "Score: %@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Punktestand: %@"
+            "value" : "Punktestand"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Score: %@"
+            "value" : "Score"
+          }
+        }
+      }
+    },
+    "Start Game" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel starten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start Game"
           }
         }
       }
@@ -111,21 +88,17 @@
       }
     },
     "Time Up!" : {
-
-    },
-    "Wrong! That's the flag of %@!" : {
-      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Falsch! Das ist die Flagge von %@"
+            "value" : "Zeit um!"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Wrong! That’s the flag of %@"
+            "value" : "Time up!"
           }
         }
       }

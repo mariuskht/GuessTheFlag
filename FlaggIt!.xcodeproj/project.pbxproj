@@ -25,6 +25,9 @@
 		291FC4972FFAE2520082EE83 /* GuessTheFlagUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4952FFAE2520082EE83 /* GuessTheFlagUITestsLaunchTests.swift */; };
 		291FC4982FFAE2520082EE83 /* GuessTheFlagUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4942FFAE2520082EE83 /* GuessTheFlagUITests.swift */; };
 		291FC49B2FFAE2600082EE83 /* GuessTheFlagTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4992FFAE2600082EE83 /* GuessTheFlagTests.swift */; };
+		291FC4A52FFB98A40082EE83 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A42FFB98A40082EE83 /* MenuView.swift */; };
+		291FC4A62FFB98A40082EE83 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A42FFB98A40082EE83 /* MenuView.swift */; };
+		291FC4A72FFB98A40082EE83 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A42FFB98A40082EE83 /* MenuView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +59,7 @@
 		291FC4942FFAE2520082EE83 /* GuessTheFlagUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagUITests.swift; sourceTree = "<group>"; };
 		291FC4952FFAE2520082EE83 /* GuessTheFlagUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		291FC4992FFAE2600082EE83 /* GuessTheFlagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagTests.swift; sourceTree = "<group>"; };
+		291FC4A42FFB98A40082EE83 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,9 +90,9 @@
 		29019B352FF10C78002B4239 = {
 			isa = PBXGroup;
 			children = (
+				291FC4842FFAE23A0082EE83 /* FlaggIt! */,
 				291FC49A2FFAE2600082EE83 /* FlaggIt!Tests */,
 				291FC4962FFAE2520082EE83 /* FlaggIt!UITests */,
-				291FC4842FFAE23A0082EE83 /* FlaggIt! */,
 				29019B3F2FF10C78002B4239 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -111,6 +115,7 @@
 				291FC4812FFAE23A0082EE83 /* CountryCodes.swift */,
 				291FC4822FFAE23A0082EE83 /* GuessTheFlagApp.swift */,
 				291FC4832FFAE23A0082EE83 /* Localizable.xcstrings */,
+				291FC4A42FFB98A40082EE83 /* MenuView.swift */,
 			);
 			path = "FlaggIt!";
 			sourceTree = "<group>";
@@ -275,6 +280,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				291FC48F2FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */,
+				291FC4A62FFB98A40082EE83 /* MenuView.swift in Sources */,
 				291FC4902FFAE23A0082EE83 /* CountryCodes.swift in Sources */,
 				291FC4912FFAE23A0082EE83 /* ContentView.swift in Sources */,
 			);
@@ -284,6 +290,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291FC4A72FFB98A40082EE83 /* MenuView.swift in Sources */,
 				291FC48A2FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */,
 				291FC48B2FFAE23A0082EE83 /* CountryCodes.swift in Sources */,
 				291FC48C2FFAE23A0082EE83 /* ContentView.swift in Sources */,
@@ -296,6 +303,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				291FC4872FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */,
+				291FC4A52FFB98A40082EE83 /* MenuView.swift in Sources */,
 				291FC4882FFAE23A0082EE83 /* CountryCodes.swift in Sources */,
 				291FC4892FFAE23A0082EE83 /* ContentView.swift in Sources */,
 				291FC4972FFAE2520082EE83 /* GuessTheFlagUITestsLaunchTests.swift in Sources */,

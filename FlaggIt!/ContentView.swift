@@ -18,6 +18,8 @@ struct ContentView: View {
     @State private var score = 0
     @State private var highscore = UserDefaults.standard.integer(forKey: "highscore")
     @State private var selectedAnswer: Int? = nil
+    
+    @Environment(\.dismiss) private var dismiss
 
     
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -29,10 +31,14 @@ struct ContentView: View {
     var body: some View {
         NavigationStack{
             ZStack{
-                LinearGradient(stops: [
-                    .init(color: Color(red: 0.1, green: 0.2, blue: 0.45), location: 0.2),
-                    .init(color: Color(red: 0.76, green: 0.15, blue: 0.26), location: 0.2)
-                ], startPoint: .top, endPoint: .bottom)
+                LinearGradient(
+                    colors: [
+                        Color(red: 0.06, green: 0.11, blue: 0.32),
+                        Color(red: 0.68, green: 0.13, blue: 0.24)
+                    ],
+                    startPoint: .topLeading,
+                    endPoint: .bottomTrailing
+                )
                 .ignoresSafeArea()
                 VStack() {
                     Spacer()
@@ -66,9 +72,9 @@ struct ContentView: View {
                     .padding(.vertical, 20)
                     .background(.regularMaterial)
                     .clipShape(.rect(cornerRadius: 20))
-                    
                     Spacer()
-                    
+                    Spacer()
+                    Spacer()
                     HStack{
                         VStack(alignment: .leading, spacing: 2){
                             Text(String(localized: "Score"))
@@ -110,6 +116,9 @@ struct ContentView: View {
                 }
             }
             .alert(resultTitle, isPresented: $showingResult) {
+                Button("Exit Game") {
+                    dismiss()
+                }
                 Button("Restart", action: resetGame)
             } message: {
                 Text("Your score is: \(score.description)")
