@@ -238,6 +238,9 @@
     letter-spacing: 0.06em;
   }
 
+  .status-row.neutral .dot { background: var(--accent); }
+  .status-row.neutral span.label { color: var(--accent); }
+
   .card {
     background: var(--paper-raised);
     border: 1px solid var(--line);
@@ -266,6 +269,100 @@
     color: var(--ink);
     line-height: 1.8;
   }
+
+  /* ---- Contact form ---- */
+  .contact-form {
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    padding: 26px 28px;
+    margin-top: 20px;
+  }
+
+  .form-row {
+    margin-bottom: 18px;
+  }
+
+  .form-row:last-of-type {
+    margin-bottom: 0;
+  }
+
+  .form-row label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+    letter-spacing: 0.01em;
+  }
+
+  .form-row .optional {
+    font-weight: 400;
+    color: var(--ink-soft);
+    text-transform: none;
+    letter-spacing: 0;
+  }
+
+  .form-row input,
+  .form-row textarea {
+    width: 100%;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 11px 13px;
+    resize: vertical;
+  }
+
+  .form-row input:focus,
+  .form-row textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+  }
+
+  .form-row textarea {
+    min-height: 130px;
+  }
+
+  .form-submit-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+  }
+
+  button.send-btn {
+    font-family: var(--sans);
+    font-size: 14.5px;
+    font-weight: 600;
+    color: #fff;
+    background: var(--accent);
+    border: none;
+    border-radius: 4px;
+    padding: 12px 22px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+  }
+
+  button.send-btn:hover { opacity: 0.9; }
+
+  .form-hint {
+    font-size: 13px;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  .form-status {
+    font-size: 13.5px;
+    color: var(--ok-green);
+    margin-top: 12px;
+    display: none;
+  }
+
+  .form-status.visible { display: block; }
 
   footer {
     max-width: 920px;
@@ -300,7 +397,7 @@
 <header>
   <div class="eyebrow">Flaggit!</div>
   <h1>Datenschutzerklärung</h1>
-  <div class="updated">Stand: 4. Juli 2026</div>
+  <div class="updated">Stand: 11. Juli 2026</div>
 </header>
 
 <div class="layout">
@@ -310,6 +407,7 @@
     <ol>
       <li><a href="#verantwortlicher">Verantwortlicher</a></li>
       <li><a href="#app">Datenverarbeitung in der App</a></li>
+      <li><a href="#support">Support-Anfragen (Kontaktformular)</a></li>
       <li><a href="#appstore">App Store</a></li>
       <li><a href="#hosting">Hosting dieser Seite</a></li>
       <li><a href="#rechte">Rechte der Nutzer</a></li>
@@ -347,17 +445,56 @@
         <h3>Highscore-Speicherung</h3>
         <p style="margin:0;">Der einzige gespeicherte Wert ist der Highscore des Spiels. Er wird ausschließlich lokal auf dem Gerät über die iOS-Systemfunktion <code>UserDefaults</code> gespeichert, verlässt das Gerät zu keinem Zeitpunkt und wird nicht an mich als Entwickler oder an Dritte übertragen. Diese Daten sind keiner bestimmten oder bestimmbaren Person zuordenbar und stellen daher keine personenbezogenen Daten im Sinne des Art. 4 Nr. 1 DSGVO dar.</p>
       </div>
-      <p>Eine Rechtsgrundlage für eine Datenverarbeitung im Sinne der DSGVO ist nicht einschlägig, da keine Verarbeitung personenbezogener Daten stattfindet.</p>
+      <p>Eine Rechtsgrundlage für eine Datenverarbeitung im Sinne der DSGVO ist nicht einschlägig, da im Rahmen der App-Nutzung selbst keine Verarbeitung personenbezogener Daten stattfindet.</p>
+    </section>
+
+    <section id="support">
+      <h2><span class="num">03</span> Support-Anfragen (Kontaktformular)</h2>
+      <div class="status-row neutral">
+        <span class="dot"></span>
+        <span class="label">Datenverarbeitung nur bei aktiver Nutzung</span>
+      </div>
+      <p>Auf dieser Seite steht dir ein Kontaktformular für Support-Anfragen zur Verfügung. Wenn du dieses Formular nutzt, werden die von dir eingegebenen Daten (Name, E-Mail-Adresse, Nachrichtentext) <strong style="color: var(--ink);">nicht an einen Server übertragen</strong>. Stattdessen öffnet das Formular direkt das auf deinem Gerät hinterlegte E-Mail-Programm mit einer vorausgefüllten Nachricht an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>. Der eigentliche Versand erfolgt über dein eigenes E-Mail-Konto, nicht über diese Webseite.</p>
+      <p>Sobald du die E-Mail tatsächlich absendest, verarbeite ich als Verantwortlicher die darin enthaltenen personenbezogenen Daten (insbesondere deine E-Mail-Adresse, ggf. deinen Namen sowie den Inhalt deiner Anfrage), um deine Anfrage zu bearbeiten und zu beantworten.</p>
+      <div class="card">
+        <h3>Rechtsgrundlage</h3>
+        <p style="margin:0;">Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch aktives Absenden der Anfrage) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung und Beantwortung eingehender Support-Anfragen).</p>
+      </div>
+      <div class="card">
+        <h3>Speicherdauer &amp; Löschung</h3>
+        <p style="margin:0;">Die im Rahmen einer Support-Anfrage übermittelten Daten werden gelöscht, sobald sie zur Bearbeitung deiner Anfrage nicht mehr erforderlich sind – in der Regel, sobald der Sachverhalt abschließend geklärt ist, spätestens jedoch nach 12 Monaten. Du kannst jederzeit die vorzeitige Löschung deiner Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Wende dich hierfür einfach per E-Mail an mich.</p>
+      </div>
+      <p>Die Angabe deiner E-Mail-Adresse ist freiwillig, aber notwendig, damit ich dir antworten kann. Ohne diese Angabe kann ich deine Anfrage nicht bearbeiten.</p>
+
+      <form class="contact-form" id="supportForm">
+        <div class="form-row">
+          <label for="name">Name <span class="optional">(optional)</span></label>
+          <input type="text" id="name" name="name" autocomplete="name">
+        </div>
+        <div class="form-row">
+          <label for="email">Deine E-Mail-Adresse</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="form-row">
+          <label for="message">Deine Nachricht</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        <div class="form-submit-row">
+          <button type="submit" class="send-btn">Nachricht senden</button>
+          <p class="form-hint">Öffnet dein E-Mail-Programm mit vorausgefüllter Nachricht an mariuskht@icloud.com</p>
+        </div>
+        <p class="form-status" id="formStatus">Dein E-Mail-Programm sollte sich gerade öffnen. Falls nicht, schreib mir direkt an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>.</p>
+      </form>
     </section>
 
     <section id="appstore">
-      <h2><span class="num">03</span> App Store</h2>
+      <h2><span class="num">04</span> App Store</h2>
       <p>Beim Herunterladen und Installieren der App über den Apple App Store verarbeitet <strong style="color: var(--ink);">Apple</strong> als eigenständiger datenschutzrechtlich Verantwortlicher bestimmte Daten (z.&nbsp;B. Apple-ID, Zahlungsdaten, Gerätekennung). Diese Verarbeitung erfolgt ausschließlich durch Apple und unterliegt der <a class="inline" href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener">Datenschutzerklärung von Apple</a>.</p>
       <p>Ich als Entwickler erhalte hierüber ausschließlich aggregierte, anonymisierte Statistiken (z.&nbsp;B. Downloadzahlen), die keinen Rückschluss auf einzelne Personen zulassen.</p>
     </section>
 
     <section id="hosting">
-      <h2><span class="num">04</span> Hosting dieser Seite</h2>
+      <h2><span class="num">05</span> Hosting dieser Seite</h2>
       <p>Diese Datenschutzerklärung wird über <strong style="color: var(--ink);">GitHub Pages</strong> bereitgestellt (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; für EU-Nutzer: GitHub B.V., Prins Bernhardplein 200, Amsterdam, Niederlande).</p>
       <p>Beim Aufruf dieser Seite verarbeitet GitHub automatisch technische Zugriffsdaten (z.&nbsp;B. IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene URL) in Server-Logfiles, um den technischen Betrieb der Seite zu ermöglichen. Diese Verarbeitung betrifft <strong style="color: var(--ink);">ausschließlich den Aufruf dieser Webseite</strong>, nicht die Nutzung der App selbst.</p>
       <div class="card">
@@ -367,27 +504,57 @@
     </section>
 
     <section id="rechte">
-      <h2><span class="num">05</span> Rechte der Nutzer</h2>
-      <p>Da im Rahmen der App-Nutzung keine personenbezogenen Daten durch mich verarbeitet werden, laufen die Betroffenenrechte nach der DSGVO (Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerspruch) für die App-Nutzung praktisch ins Leere. Für Fragen im Zusammenhang mit dem Aufruf dieser Webseite kannst du dich jederzeit per E-Mail an mich wenden.</p>
+      <h2><span class="num">06</span> Rechte der Nutzer</h2>
+      <p>Bezüglich der über das Support-Kontaktformular verarbeiteten Daten stehen dir die Rechte auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch (Art. 21 DSGVO) zu. Da die Verarbeitung teilweise auf deiner Einwilligung beruht, kannst du diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+      <p>Da im Rahmen der reinen App-Nutzung keine personenbezogenen Daten durch mich verarbeitet werden, laufen die Betroffenenrechte insoweit praktisch ins Leere.</p>
       <p>Unabhängig davon hast du das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren, z.&nbsp;B. bei der für Rheinland-Pfalz zuständigen Landesbeauftragten für den Datenschutz.</p>
     </section>
 
     <section id="aenderungen">
-      <h2><span class="num">06</span> Änderungen dieser Erklärung</h2>
-      <p>Sollte sich die Datenverarbeitung der App zukünftig ändern (z.&nbsp;B. durch Hinzufügen von iCloud-Sync, Push-Benachrichtigungen oder Werbung), wird diese Erklärung entsprechend angepasst. Das Datum der letzten Aktualisierung findest du oben auf dieser Seite.</p>
+      <h2><span class="num">07</span> Änderungen dieser Erklärung</h2>
+      <p>Sollte sich die Datenverarbeitung der App oder dieser Webseite zukünftig ändern (z.&nbsp;B. durch Hinzufügen von iCloud-Sync, Push-Benachrichtigungen oder Werbung), wird diese Erklärung entsprechend angepasst. Das Datum der letzten Aktualisierung findest du oben auf dieser Seite.</p>
     </section>
 
     <section id="kontakt">
-      <h2><span class="num">07</span> Kontakt</h2>
-      <p>Bei Fragen zu dieser Datenschutzerklärung erreichst du mich unter <a class="inline" href="mailto:mariuskht@pm.me">mariuskht@pm.me</a>.</p>
+      <h2><span class="num">08</span> Kontakt</h2>
+      <p>Bei Fragen zu dieser Datenschutzerklärung erreichst du mich unter <a class="inline" href="mailto:mariuskht@pm.me">mariuskht@pm.me</a>. Für Support-Anfragen zur App kannst du das <a class="inline" href="#support">Kontaktformular weiter oben</a> nutzen oder direkt eine E-Mail an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a> schreiben.</p>
     </section>
 
   </main>
 </div>
 
 <footer>
-  Flaggit! · Datenschutzerklärung · Stand 4. Juli 2026
+  Flaggit! · Datenschutzerklärung · Stand 11. Juli 2026
 </footer>
+
+<script>
+  document.getElementById('supportForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    var message = document.getElementById('message').value.trim();
+
+    var subject = 'Support-Anfrage FlaggIt!';
+    var bodyLines = [];
+    if (name) {
+      bodyLines.push('Name: ' + name);
+    }
+    bodyLines.push('E-Mail: ' + email);
+    bodyLines.push('');
+    bodyLines.push(message);
+
+    var body = bodyLines.join('\n');
+    var mailtoLink = 'mailto:mariuskht@icloud.com'
+      + '?subject=' + encodeURIComponent(subject)
+      + '&body=' + encodeURIComponent(body);
+
+    window.location.href = mailtoLink;
+
+    var status = document.getElementById('formStatus');
+    status.classList.add('visible');
+  });
+</script>
 
 </body>
 </html>
