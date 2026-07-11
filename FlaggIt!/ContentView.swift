@@ -10,37 +10,45 @@ import SwiftUI
 internal import Combine
 
 struct ContentView: View {
-    
-    @State private var countries = ["Afghanistan", "AlandIslands", "Albania", "Algeria", "Andorra", "Angola", "Anguilla", "Antarctica", "AntiguaandBarbuda", "Argentina", "Armenia", "Aruba", "Australia", "Austria", "Azerbaijan", "Bahamas", "Bahrain", "Bangladesh", "Barbados", "Belarus", "Belgium", "Belize", "Benin", "Bermuda", "Bhutan", "BoliviaPlurinationalStateof", "BonaireSintEustatiusandSaba", "BosniaandHerzegovina", "Botswana", "BouvetIsland", "Brazil", "BritishIndianOceanTerritory", "BruneiDarussalam", "Bulgaria", "BurkinaFaso", "Burundi", "CaboVerde", "Cambodia", "Cameroon", "Canada", "CaymanIslands", "CentralAfricanRepublic", "Chad", "Chile", "China", "ChristmasIsland", "CocosKeelingIslands", "Colombia", "Comoros", "Congo", "CongoTheDemocraticRepublicofthe", "CookIslands", "CostaRica", "CotedIvoire", "Croatia", "Cuba", "Curacao", "Cyprus", "Czechia", "Denmark", "Djibouti", "Dominica", "DominicanRepublic", "Ecuador", "Egypt", "ElSalvador", "EquatorialGuinea", "Eritrea", "Estonia", "Eswatini", "Ethiopia", "FalklandIslandsMalvinas", "FaroeIslands", "Fiji", "Finland", "France", "FrenchGuiana", "FrenchPolynesia", "FrenchSouthernTerritories", "Gabon", "Gambia", "Georgia", "Germany", "Ghana", "Gibraltar", "Greece", "Greenland", "Grenada", "Guadeloupe", "Guatemala", "Guernsey", "Guinea", "GuineaBissau", "Guyana", "Haiti", "HeardIslandandMcDonaldIslands", "HolySeeVaticanCityState", "Honduras", "Hungary", "Iceland", "India", "Indonesia", "IranIslamicRepublicof", "Iraq", "Ireland", "IsleofMan", "Israel", "Italy", "Jamaica", "Japan", "Jersey", "Jordan", "Kazakhstan", "Kenya", "Kiribati", "KoreaDemocraticPeoplesRepublicof", "KoreaRepublicof", "Kosovo", "Kuwait", "Kyrgyzstan", "LaoPeoplesDemocraticRepublic", "Latvia", "Lebanon", "Lesotho", "Liberia", "Libya", "Liechtenstein", "Lithuania", "Luxembourg", "Madagascar", "Malawi", "Malaysia", "Maldives", "Mali", "Malta", "MarshallIslands", "Martinique", "Mauritania", "Mauritius", "Mayotte", "Mexico", "MicronesiaFederatedStatesof", "MoldovaRepublicof", "Monaco", "Mongolia", "Montenegro", "Montserrat", "Morocco", "Mozambique", "Myanmar", "Namibia", "Nauru", "Nepal", "Netherlands", "NewCaledonia", "NewZealand", "Nicaragua", "Niger", "Nigeria", "Niue", "NorfolkIsland", "NorthMacedonia", "NorthernMarianaIslands", "Norway", "Oman", "Pakistan", "Palau", "PalestineStateof", "Panama", "PapuaNewGuinea", "Paraguay", "Peru", "Philippines", "Pitcairn", "Poland", "Portugal", "Qatar", "Reunion", "Romania", "RussianFederation", "Rwanda", "SaintBarthelemy", "SaintHelenaAscensionandTristandaCunha", "SaintKittsandNevis", "SaintLucia", "SaintMartinFrenchpart", "SaintPierreandMiquelon", "SaintVincentandtheGrenadines", "Samoa", "SanMarino", "SaoTomeandPrincipe", "SaudiArabia", "Senegal", "Serbia", "Seychelles", "SierraLeone", "Singapore", "SintMaartenDutchpart", "Slovakia", "Slovenia", "SolomonIslands", "Somalia", "SouthAfrica", "SouthGeorgiaandtheSouthSandwichIslands", "SouthSudan", "Spain", "SriLanka", "Sudan", "Suriname", "SvalbardandJanMayen", "Sweden", "Switzerland", "SyrianArabRepublic", "TaiwanProvinceofChina", "Tajikistan", "TanzaniaUnitedRepublicof", "Thailand", "TimorLeste", "Togo", "Tokelau", "Tonga", "TrinidadandTobago", "Tunisia", "Turkiye", "Turkmenistan", "TurksandCaicosIslands", "Tuvalu", "UK", "US", "Uganda", "Ukraine", "UnitedArabEmirates", "UnitedStatesMinorOutlyingIslands", "Uruguay", "Uzbekistan", "Vanuatu", "VenezuelaBolivarianRepublicof", "VietNam", "VirginIslandsBritish", "VirginIslandsUS", "WallisandFutuna", "WesternSahara", "Yemen", "Zambia", "Zimbabwe"].shuffled()
     @State private var correctAnswer = Int.random(in: 0...2)
+    var selectedRegion: Region
     @State private var timeRemaining = 120
     @State private var showingResult = false
     @State private var resultTitle = "0"
     @State private var score = 0
     @State private var highscore = UserDefaults.standard.integer(forKey: "highscore")
     @State private var selectedAnswer: Int? = nil
+    @State private var countries: [Country]
     
     @Environment(\.dismiss) private var dismiss
 
-    
     var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     var timeString: String{
         String(format: "%d:%02d", timeRemaining / 60, timeRemaining % 60)
     }
     
+    init(selectedRegion: Region) {
+        self.selectedRegion = selectedRegion
+        let pool = selectedRegion == .all ? Country.all : Country.all.filter { selectedRegion.rawValue == $0.region.rawValue }
+        _countries = State(initialValue: Array(pool.shuffled().prefix(3)))
+        _correctAnswer = State(initialValue: Int.random(in: 0...2))
+    }
+    
+    var countriesPool : [Country] {
+        if selectedRegion == .all {
+            Country.all
+        }else {
+            Country.all.filter{selectedRegion.rawValue ==  $0.region.rawValue}
+        }
+    }
+    
     var body: some View {
         NavigationStack{
             ZStack{
-                LinearGradient(
-                    colors: [
-                        Color(red: 0.06, green: 0.11, blue: 0.32),
-                        Color(red: 0.68, green: 0.13, blue: 0.24)
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
+                Color.appBackground
+                    .ignoresSafeArea()
+                
                 VStack() {
                     Spacer()
                     VStack(spacing: 15) {
@@ -48,7 +56,7 @@ struct ContentView: View {
                             Text("Tap the flag of")
                                 .foregroundStyle(.secondary)
                                 .font(.subheadline.weight(.heavy))
-                            Text(localizedCountryName(for: countries[correctAnswer]))
+                            Text(countries[correctAnswer].localizedName)
                                 .multilineTextAlignment(.center)
                                 .frame(maxWidth: .infinity)
                                 .font(.largeTitle.weight(.semibold))
@@ -61,30 +69,37 @@ struct ContentView: View {
                             Button{
                                 flagTapped(number)
                             }label: {
-                                Image(countries[number])
+                                Image(countries[number].assetName)
                                     .resizable()
                                     .scaledToFit()
-                                    .shadow(radius: 5)
                                     .frame(maxWidth: 200)
+                                    .background(Color.appCard)
+                                    .clipShape(RoundedRectangle(cornerRadius: 16))
                                     .overlay(RoundedRectangle(cornerRadius: 0)
-                                        .stroke(borderColor(for: number), lineWidth: 4))
+                                        .strokeBorder(Color.black.opacity(0.05), lineWidth: 1))
+                                    .overlay(RoundedRectangle(cornerRadius: 0)
+                                        .strokeBorder(borderColor(for: number), lineWidth: 4))
+                                    .shadow(color: .black.opacity(0.06), radius: 8, y: 4)
                             }
                         }
                     }
                     .frame(maxWidth: .infinity)
                     .padding(.vertical, 20)
-                    .background(.regularMaterial)
-                    .clipShape(.rect(cornerRadius: 20))
+                    .background(Color.appCard)
+                    .clipShape(RoundedRectangle(cornerRadius: 16))
+                    .overlay(RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(Color.black.opacity(0.05), lineWidth: 1))
+                    .shadow(color: .black.opacity(0.06), radius: 8, y: 4)
                     Spacer()
                     Spacer()
                     Spacer()
                     HStack{
                         VStack(alignment: .leading, spacing: 2){
                             Text(String(localized: "Score"))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color.appTextPrimary)
                                 .font(.subheadline)
                             Text(score.description)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color.appTextPrimary)
                                 .font(.title.bold())
                         }
                         Spacer()
@@ -94,10 +109,10 @@ struct ContentView: View {
                         Spacer()
                         VStack(alignment: .leading, spacing: 2){
                             Text(String(localized: "Highscore"))
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color.appTextPrimary)
                                 .font(.subheadline)
                             Text(highscore.description)
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color.appTextPrimary)
                                 .font(.title.bold())
                         }
                     }
@@ -115,7 +130,7 @@ struct ContentView: View {
                 ToolbarItem{
                     Text(timeString)
                         .font(.largeTitle.monospacedDigit())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.appTextPrimary)
                         .frame(minWidth: 100)
                 }
                 .sharedBackgroundVisibility(.hidden)
@@ -160,7 +175,7 @@ struct ContentView: View {
     }
     
     func askQuestion() {
-        countries.shuffle()
+        countries = Array(countriesPool.shuffled().prefix(3))
         correctAnswer = Int.random(in: 0...2)
         selectedAnswer = nil
     }
@@ -169,11 +184,6 @@ struct ContentView: View {
         score = 0
         timeRemaining = 120
         askQuestion()
-    }
-    
-    func localizedCountryName(for assetName: String) -> String {
-        guard let isoCode = countryISOCodes[assetName] else { return assetName }
-        return Locale.current.localizedString(forRegionCode: isoCode) ?? assetName
     }
     
     func borderColor(for number: Int) -> Color {
@@ -186,8 +196,4 @@ struct ContentView: View {
             return .red
         }
     }
-}
-
-#Preview {
-    ContentView()
 }

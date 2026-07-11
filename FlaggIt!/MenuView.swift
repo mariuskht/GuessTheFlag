@@ -8,19 +8,12 @@
 import SwiftUI
 
 struct MenuView: View {
-    @State private var showingGame = false
+    @State private var showingRegion = false
     var body: some View {
         NavigationStack{
             ZStack{
-                LinearGradient(
-                    colors: [
-                        Color(red: 0.06, green: 0.11, blue: 0.32),
-                        Color(red: 0.68, green: 0.13, blue: 0.24)
-                    ],
-                    startPoint: .topLeading,
-                    endPoint: .bottomTrailing
-                )
-                .ignoresSafeArea()
+                Color.appBackground
+                    .ignoresSafeArea()
                 VStack(spacing: 12){
                     Image("AppLogo")
                         .resizable()
@@ -29,24 +22,24 @@ struct MenuView: View {
                     
                     Text("Flaggit!")
                         .font(.largeTitle.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.appTextPrimary)
                     
                     Button{
-                        showingGame = true
+                        showingRegion = true
                     }label:{
                         Text("Start Game")
-                            .font(.title3.weight(.semibold))
-                            .foregroundStyle(.black)
+                            .font(.system(.headline, design: .rounded).weight(.semibold))
+                            .foregroundStyle(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
-                            .background(.white)
-                            .clipShape(.rect(cornerRadius: 12))
+                            .background(Color.appAccent)
+                            .clipShape(RoundedRectangle(cornerRadius: 14))
                             .padding(.horizontal, 40)
                     }
                 }
             }
-            .fullScreenCover(isPresented: $showingGame){
-                ContentView()
+            .fullScreenCover(isPresented: $showingRegion){
+                RegionView()
             }
         }
     }

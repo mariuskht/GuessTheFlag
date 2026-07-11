@@ -10,15 +10,12 @@
 		291FC4852FFAE23A0082EE83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 291FC4832FFAE23A0082EE83 /* Localizable.xcstrings */; };
 		291FC4862FFAE23A0082EE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291FC47F2FFAE23A0082EE83 /* Assets.xcassets */; };
 		291FC4872FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4822FFAE23A0082EE83 /* GuessTheFlagApp.swift */; };
-		291FC4882FFAE23A0082EE83 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4812FFAE23A0082EE83 /* CountryCodes.swift */; };
 		291FC4892FFAE23A0082EE83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4802FFAE23A0082EE83 /* ContentView.swift */; };
 		291FC48A2FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4822FFAE23A0082EE83 /* GuessTheFlagApp.swift */; };
-		291FC48B2FFAE23A0082EE83 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4812FFAE23A0082EE83 /* CountryCodes.swift */; };
 		291FC48C2FFAE23A0082EE83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4802FFAE23A0082EE83 /* ContentView.swift */; };
 		291FC48D2FFAE23A0082EE83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 291FC4832FFAE23A0082EE83 /* Localizable.xcstrings */; };
 		291FC48E2FFAE23A0082EE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291FC47F2FFAE23A0082EE83 /* Assets.xcassets */; };
 		291FC48F2FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4822FFAE23A0082EE83 /* GuessTheFlagApp.swift */; };
-		291FC4902FFAE23A0082EE83 /* CountryCodes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4812FFAE23A0082EE83 /* CountryCodes.swift */; };
 		291FC4912FFAE23A0082EE83 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4802FFAE23A0082EE83 /* ContentView.swift */; };
 		291FC4922FFAE23A0082EE83 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 291FC4832FFAE23A0082EE83 /* Localizable.xcstrings */; };
 		291FC4932FFAE23A0082EE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 291FC47F2FFAE23A0082EE83 /* Assets.xcassets */; };
@@ -28,6 +25,12 @@
 		291FC4A52FFB98A40082EE83 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A42FFB98A40082EE83 /* MenuView.swift */; };
 		291FC4A62FFB98A40082EE83 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A42FFB98A40082EE83 /* MenuView.swift */; };
 		291FC4A72FFB98A40082EE83 /* MenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A42FFB98A40082EE83 /* MenuView.swift */; };
+		291FC4A92FFCE4F30082EE83 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A82FFCE4F30082EE83 /* Countries.swift */; };
+		291FC4AA2FFCE4F30082EE83 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A82FFCE4F30082EE83 /* Countries.swift */; };
+		291FC4AB2FFCE4F30082EE83 /* Countries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4A82FFCE4F30082EE83 /* Countries.swift */; };
+		291FC4AD2FFCF16E0082EE83 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4AC2FFCF16E0082EE83 /* RegionView.swift */; };
+		291FC4AE2FFCF16E0082EE83 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4AC2FFCF16E0082EE83 /* RegionView.swift */; };
+		291FC4AF2FFCF16E0082EE83 /* RegionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FC4AC2FFCF16E0082EE83 /* RegionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,13 +56,14 @@
 		29019B552FF10C7A002B4239 /* FlaggIt!UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FlaggIt!UITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		291FC47F2FFAE23A0082EE83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		291FC4802FFAE23A0082EE83 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		291FC4812FFAE23A0082EE83 /* CountryCodes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodes.swift; sourceTree = "<group>"; };
 		291FC4822FFAE23A0082EE83 /* GuessTheFlagApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagApp.swift; sourceTree = "<group>"; };
 		291FC4832FFAE23A0082EE83 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		291FC4942FFAE2520082EE83 /* GuessTheFlagUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagUITests.swift; sourceTree = "<group>"; };
 		291FC4952FFAE2520082EE83 /* GuessTheFlagUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		291FC4992FFAE2600082EE83 /* GuessTheFlagTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuessTheFlagTests.swift; sourceTree = "<group>"; };
 		291FC4A42FFB98A40082EE83 /* MenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuView.swift; sourceTree = "<group>"; };
+		291FC4A82FFCE4F30082EE83 /* Countries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Countries.swift; sourceTree = "<group>"; };
+		291FC4AC2FFCF16E0082EE83 /* RegionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,10 +116,11 @@
 			children = (
 				291FC47F2FFAE23A0082EE83 /* Assets.xcassets */,
 				291FC4802FFAE23A0082EE83 /* ContentView.swift */,
-				291FC4812FFAE23A0082EE83 /* CountryCodes.swift */,
 				291FC4822FFAE23A0082EE83 /* GuessTheFlagApp.swift */,
 				291FC4832FFAE23A0082EE83 /* Localizable.xcstrings */,
 				291FC4A42FFB98A40082EE83 /* MenuView.swift */,
+				291FC4A82FFCE4F30082EE83 /* Countries.swift */,
+				291FC4AC2FFCF16E0082EE83 /* RegionView.swift */,
 			);
 			path = "FlaggIt!";
 			sourceTree = "<group>";
@@ -281,7 +286,8 @@
 			files = (
 				291FC48F2FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */,
 				291FC4A62FFB98A40082EE83 /* MenuView.swift in Sources */,
-				291FC4902FFAE23A0082EE83 /* CountryCodes.swift in Sources */,
+				291FC4AF2FFCF16E0082EE83 /* RegionView.swift in Sources */,
+				291FC4A92FFCE4F30082EE83 /* Countries.swift in Sources */,
 				291FC4912FFAE23A0082EE83 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -290,10 +296,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				291FC4AD2FFCF16E0082EE83 /* RegionView.swift in Sources */,
 				291FC4A72FFB98A40082EE83 /* MenuView.swift in Sources */,
 				291FC48A2FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */,
-				291FC48B2FFAE23A0082EE83 /* CountryCodes.swift in Sources */,
 				291FC48C2FFAE23A0082EE83 /* ContentView.swift in Sources */,
+				291FC4AA2FFCE4F30082EE83 /* Countries.swift in Sources */,
 				291FC49B2FFAE2600082EE83 /* GuessTheFlagTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,9 +311,10 @@
 			files = (
 				291FC4872FFAE23A0082EE83 /* GuessTheFlagApp.swift in Sources */,
 				291FC4A52FFB98A40082EE83 /* MenuView.swift in Sources */,
-				291FC4882FFAE23A0082EE83 /* CountryCodes.swift in Sources */,
 				291FC4892FFAE23A0082EE83 /* ContentView.swift in Sources */,
+				291FC4AE2FFCF16E0082EE83 /* RegionView.swift in Sources */,
 				291FC4972FFAE2520082EE83 /* GuessTheFlagUITestsLaunchTests.swift in Sources */,
+				291FC4AB2FFCE4F30082EE83 /* Countries.swift in Sources */,
 				291FC4982FFAE2520082EE83 /* GuessTheFlagUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
