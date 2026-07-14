@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" data-lang="de">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Datenschutzerklärung - Flaggit!</title>
+<title>Datenschutzerklärung / Privacy Policy - Flaggit!</title>
 <style>
   :root {
     --ink: #1b2a4a;
@@ -20,6 +20,9 @@
 
   * { box-sizing: border-box; }
 
+  html[data-lang="en"] .lang-de { display: none !important; }
+  html[data-lang="de"] .lang-en { display: none !important; }
+
   body {
     margin: 0;
     background: var(--paper);
@@ -29,7 +32,6 @@
     font-size: 16px;
   }
 
-  /* ---- Flag strip signature element ---- */
   .flagstrip {
     height: 8px;
     width: 100%;
@@ -55,6 +57,36 @@
     max-width: 920px;
     margin: 0 auto;
     padding: 56px 24px 32px;
+    position: relative;
+  }
+
+  .lang-toggle {
+    position: absolute;
+    top: 56px;
+    right: 24px;
+    display: flex;
+    gap: 4px;
+    background: var(--paper-raised);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    padding: 3px;
+  }
+
+  .lang-toggle button {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: transparent;
+    border: none;
+    border-radius: 16px;
+    padding: 6px 14px;
+    cursor: pointer;
+  }
+
+  .lang-toggle button.active {
+    background: var(--ink);
+    color: #fff;
   }
 
   .eyebrow {
@@ -91,40 +123,6 @@
     border-top: 1px solid var(--line);
   }
 
-  /* ---- Summary callout ---- */
-  .summary {
-    max-width: 920px;
-    margin: 0 auto 8px;
-    padding: 0 24px;
-  }
-
-  .summary-box {
-    background: var(--paper-raised);
-    border: 1px solid var(--line);
-    border-left: 4px solid var(--ok-green);
-    border-radius: 4px;
-    padding: 22px 26px;
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-  }
-
-  .summary-box .icon {
-    flex-shrink: 0;
-    width: 22px;
-    height: 22px;
-    margin-top: 3px;
-  }
-
-  .summary-box p {
-    margin: 0;
-    font-size: 15.5px;
-    color: var(--ink);
-  }
-
-  .summary-box strong { color: var(--ok-green); }
-
-  /* ---- Layout ---- */
   .layout {
     max-width: 920px;
     margin: 0 auto;
@@ -270,7 +268,6 @@
     line-height: 1.8;
   }
 
-  /* ---- Contact form ---- */
   .contact-form {
     background: var(--paper-raised);
     border: 1px solid var(--line);
@@ -279,13 +276,8 @@
     margin-top: 20px;
   }
 
-  .form-row {
-    margin-bottom: 18px;
-  }
-
-  .form-row:last-of-type {
-    margin-bottom: 0;
-  }
+  .form-row { margin-bottom: 18px; }
+  .form-row:last-of-type { margin-bottom: 0; }
 
   .form-row label {
     display: block;
@@ -322,9 +314,7 @@
     border-color: var(--accent);
   }
 
-  .form-row textarea {
-    min-height: 130px;
-  }
+  .form-row textarea { min-height: 130px; }
 
   .form-submit-row {
     display: flex;
@@ -349,11 +339,7 @@
 
   button.send-btn:hover { opacity: 0.9; }
 
-  .form-hint {
-    font-size: 13px;
-    color: var(--ink-soft);
-    margin: 0;
-  }
+  .form-hint { font-size: 13px; color: var(--ink-soft); margin: 0; }
 
   .form-status {
     font-size: 13.5px;
@@ -383,6 +369,7 @@
     }
     nav.toc ol { border-left: none; }
     nav.toc a { padding-left: 0; border-left: none; }
+    .lang-toggle { position: static; margin-top: 18px; display: inline-flex; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -395,139 +382,200 @@
 <div class="flagstrip" aria-hidden="true"></div>
 
 <header>
+  <div class="lang-toggle" role="group" aria-label="Sprache / Language">
+    <button type="button" data-lang="de" class="active" onclick="setLang('de')">DE</button>
+    <button type="button" data-lang="en" onclick="setLang('en')">EN</button>
+  </div>
+
   <div class="eyebrow">Flaggit!</div>
-  <h1>Datenschutzerklärung</h1>
-  <div class="updated">Stand: 11. Juli 2026</div>
+  <h1><span class="lang-de">Datenschutzerklärung</span><span class="lang-en">Privacy Policy</span></h1>
+  <div class="updated">
+    <span class="lang-de">Stand: 14. Juli 2026</span>
+    <span class="lang-en">Last updated: July 14, 2026</span>
+  </div>
 </header>
 
 <div class="layout">
 
-  <nav class="toc" aria-label="Inhaltsverzeichnis">
-    <div class="toc-label">Inhalt</div>
+  <nav class="toc" aria-label="Inhaltsverzeichnis / Table of contents">
+    <div class="toc-label"><span class="lang-de">Inhalt</span><span class="lang-en">Contents</span></div>
     <ol>
-      <li><a href="#verantwortlicher">Verantwortlicher</a></li>
-      <li><a href="#app">Datenverarbeitung in der App</a></li>
-      <li><a href="#support">Support-Anfragen (Kontaktformular)</a></li>
-      <li><a href="#appstore">App Store</a></li>
-      <li><a href="#hosting">Hosting dieser Seite</a></li>
-      <li><a href="#rechte">Rechte der Nutzer</a></li>
-      <li><a href="#aenderungen">Änderungen</a></li>
-      <li><a href="#kontakt">Kontakt</a></li>
+      <li><a href="#verantwortlicher"><span class="lang-de">Verantwortlicher</span><span class="lang-en">Controller</span></a></li>
+      <li><a href="#app"><span class="lang-de">Datenverarbeitung in der App</span><span class="lang-en">Data processing in the app</span></a></li>
+      <li><a href="#support"><span class="lang-de">Support-Anfragen (Kontaktformular)</span><span class="lang-en">Support requests (contact form)</span></a></li>
+      <li><a href="#appstore"><span class="lang-de">App Store</span><span class="lang-en">App Store</span></a></li>
+      <li><a href="#hosting"><span class="lang-de">Hosting dieser Seite</span><span class="lang-en">Hosting of this website</span></a></li>
+      <li><a href="#bildnachweise"><span class="lang-de">Bildnachweise</span><span class="lang-en">Image credits</span></a></li>
+      <li><a href="#rechte"><span class="lang-de">Rechte der Nutzer</span><span class="lang-en">Your rights</span></a></li>
+      <li><a href="#aenderungen"><span class="lang-de">Änderungen</span><span class="lang-en">Changes</span></a></li>
+      <li><a href="#kontakt"><span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></a></li>
     </ol>
   </nav>
 
   <main>
 
     <section id="verantwortlicher">
-      <h2><span class="num">01</span> Verantwortlicher</h2>
+      <h2><span class="num">01</span> <span class="lang-de">Verantwortlicher</span><span class="lang-en">Controller</span></h2>
       <div class="contact-block">
         Marius Kurth<br>
-        Hauptstraße 70<br>
-        53489 Sinzig<br>
-        E-Mail: <a class="inline" href="mailto:mariuskht@pm.me">mariuskht@pm.me</a>
+        c/o Autorenglück #50960<br>
+        Albert-Einstein-Str. 47<br>
+        02977 Hoyerswerda<br>
+        <span class="lang-de">Deutschland</span><span class="lang-en">Germany</span><br>
+        <span class="lang-de">E-Mail</span><span class="lang-en">Email</span>: <a class="inline" href="mailto:mariuskht@pm.me">mariuskht@pm.me</a>
       </div>
     </section>
 
     <section id="app">
-      <h2><span class="num">02</span> Datenverarbeitung in der App</h2>
+      <h2><span class="num">02</span> <span class="lang-de">Datenverarbeitung in der App</span><span class="lang-en">Data processing in the app</span></h2>
       <div class="status-row">
         <span class="dot"></span>
-        <span class="label">Keine Datenerhebung</span>
+        <span class="label"><span class="lang-de">Keine Datenerhebung</span><span class="lang-en">No data collection</span></span>
       </div>
-      <p>Flaggit! ist eine vollständig offline funktionierende Anwendung. Die App:</p>
-      <ul>
+      <p class="lang-de">Flaggit! ist eine vollständig offline funktionierende Anwendung. Die App:</p>
+      <p class="lang-en">Flaggit! is a fully offline application. The app:</p>
+      <ul class="lang-de">
         <li class="no">fordert <strong>keine Geräteberechtigungen</strong> an (kein Zugriff auf Kontakte, Fotos, Standort, Kamera, Mikrofon o. Ä.)</li>
         <li class="no">stellt <strong>keine Internetverbindung</strong> her</li>
         <li class="no">bindet <strong>keine</strong> Analyse-, Tracking- oder Werbedienste Dritter ein</li>
         <li class="no">verwendet <strong>keine</strong> Cookies</li>
       </ul>
+      <ul class="lang-en">
+        <li class="no">requests <strong>no device permissions</strong> (no access to contacts, photos, location, camera, microphone, etc.)</li>
+        <li class="no">does <strong>not</strong> establish an internet connection</li>
+        <li class="no">does <strong>not</strong> integrate any third-party analytics, tracking, or advertising services</li>
+        <li class="no">does <strong>not</strong> use cookies</li>
+      </ul>
       <div class="card">
-        <h3>Highscore-Speicherung</h3>
-        <p style="margin:0;">Der einzige gespeicherte Wert ist der Highscore des Spiels. Er wird ausschließlich lokal auf dem Gerät über die iOS-Systemfunktion <code>UserDefaults</code> gespeichert, verlässt das Gerät zu keinem Zeitpunkt und wird nicht an mich als Entwickler oder an Dritte übertragen. Diese Daten sind keiner bestimmten oder bestimmbaren Person zuordenbar und stellen daher keine personenbezogenen Daten im Sinne des Art. 4 Nr. 1 DSGVO dar.</p>
+        <h3><span class="lang-de">Highscore-Speicherung</span><span class="lang-en">Highscore storage</span></h3>
+        <p class="lang-de" style="margin:0;">Der einzige gespeicherte Wert ist der Highscore des Spiels. Er wird ausschließlich lokal auf dem Gerät über die iOS-Systemfunktion <code>UserDefaults</code> gespeichert, verlässt das Gerät zu keinem Zeitpunkt und wird nicht an mich als Entwickler oder an Dritte übertragen. Diese Daten sind keiner bestimmten oder bestimmbaren Person zuordenbar und stellen daher keine personenbezogenen Daten im Sinne des Art. 4 Nr. 1 DSGVO dar.</p>
+        <p class="lang-en" style="margin:0;">The only value stored is the game's highscore. It is stored exclusively on the local device via the iOS system function <code>UserDefaults</code>, never leaves the device, and is not transmitted to me as the developer or to any third party. This data cannot be attributed to an identified or identifiable person and therefore does not constitute personal data within the meaning of Art. 4 No. 1 GDPR.</p>
       </div>
-      <p>Eine Rechtsgrundlage für eine Datenverarbeitung im Sinne der DSGVO ist nicht einschlägig, da im Rahmen der App-Nutzung selbst keine Verarbeitung personenbezogener Daten stattfindet.</p>
+      <p class="lang-de">Eine Rechtsgrundlage für eine Datenverarbeitung im Sinne der DSGVO ist nicht einschlägig, da im Rahmen der App-Nutzung selbst keine Verarbeitung personenbezogener Daten stattfindet.</p>
+      <p class="lang-en">No legal basis for data processing under the GDPR is applicable, as no processing of personal data takes place through use of the app itself.</p>
     </section>
 
     <section id="support">
-      <h2><span class="num">03</span> Support-Anfragen (Kontaktformular)</h2>
+      <h2><span class="num">03</span> <span class="lang-de">Support-Anfragen (Kontaktformular)</span><span class="lang-en">Support requests (contact form)</span></h2>
       <div class="status-row neutral">
         <span class="dot"></span>
-        <span class="label">Datenverarbeitung nur bei aktiver Nutzung</span>
+        <span class="label"><span class="lang-de">Datenverarbeitung nur bei aktiver Nutzung</span><span class="lang-en">Processing only upon active use</span></span>
       </div>
-      <p>Auf dieser Seite steht dir ein Kontaktformular für Support-Anfragen zur Verfügung. Wenn du dieses Formular nutzt, werden die von dir eingegebenen Daten (Name, E-Mail-Adresse, Nachrichtentext) <strong style="color: var(--ink);">nicht an einen Server übertragen</strong>. Stattdessen öffnet das Formular direkt das auf deinem Gerät hinterlegte E-Mail-Programm mit einer vorausgefüllten Nachricht an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>. Der eigentliche Versand erfolgt über dein eigenes E-Mail-Konto, nicht über diese Webseite.</p>
-      <p>Sobald du die E-Mail tatsächlich absendest, verarbeite ich als Verantwortlicher die darin enthaltenen personenbezogenen Daten (insbesondere deine E-Mail-Adresse, ggf. deinen Namen sowie den Inhalt deiner Anfrage), um deine Anfrage zu bearbeiten und zu beantworten.</p>
+      <p class="lang-de">Auf dieser Seite steht dir ein Kontaktformular für Support-Anfragen zur Verfügung. Wenn du dieses Formular nutzt, werden die von dir eingegebenen Daten (Name, E-Mail-Adresse, Nachrichtentext) <strong style="color: var(--ink);">nicht an einen Server übertragen</strong>. Stattdessen öffnet das Formular direkt das auf deinem Gerät hinterlegte E-Mail-Programm mit einer vorausgefüllten Nachricht an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>. Der eigentliche Versand erfolgt über dein eigenes E-Mail-Konto, nicht über diese Webseite.</p>
+      <p class="lang-en">This page provides a contact form for support requests. When you use this form, the data you enter (name, email address, message text) is <strong style="color: var(--ink);">not transmitted to any server</strong>. Instead, the form opens the email program installed on your device with a pre-filled message addressed to <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>. The actual sending takes place through your own email account, not through this website.</p>
+
+      <p class="lang-de">Sobald du die E-Mail tatsächlich absendest, verarbeite ich als Verantwortlicher die darin enthaltenen personenbezogenen Daten (insbesondere deine E-Mail-Adresse, ggf. deinen Namen sowie den Inhalt deiner Anfrage), um deine Anfrage zu bearbeiten und zu beantworten.</p>
+      <p class="lang-en">Once you actually send the email, I, as the controller, process the personal data it contains (in particular your email address, your name if provided, and the content of your request) in order to process and respond to your inquiry.</p>
+
       <div class="card">
-        <h3>Rechtsgrundlage</h3>
-        <p style="margin:0;">Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch aktives Absenden der Anfrage) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung und Beantwortung eingehender Support-Anfragen).</p>
+        <h3><span class="lang-de">Rechtsgrundlage</span><span class="lang-en">Legal basis</span></h3>
+        <p class="lang-de" style="margin:0;">Art. 6 Abs. 1 lit. a DSGVO (Einwilligung durch aktives Absenden der Anfrage) sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Bearbeitung und Beantwortung eingehender Support-Anfragen).</p>
+        <p class="lang-en" style="margin:0;">Art. 6(1)(a) GDPR (consent given by actively sending the request) and Art. 6(1)(f) GDPR (legitimate interest in processing and responding to incoming support requests).</p>
       </div>
       <div class="card">
-        <h3>Speicherdauer &amp; Löschung</h3>
-        <p style="margin:0;">Die im Rahmen einer Support-Anfrage übermittelten Daten werden gelöscht, sobald sie zur Bearbeitung deiner Anfrage nicht mehr erforderlich sind – in der Regel, sobald der Sachverhalt abschließend geklärt ist, spätestens jedoch nach 12 Monaten. Du kannst jederzeit die vorzeitige Löschung deiner Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Wende dich hierfür einfach per E-Mail an mich.</p>
+        <h3><span class="lang-de">Speicherdauer &amp; Löschung</span><span class="lang-en">Retention &amp; deletion</span></h3>
+        <p class="lang-de" style="margin:0;">Die im Rahmen einer Support-Anfrage übermittelten Daten werden gelöscht, sobald sie zur Bearbeitung deiner Anfrage nicht mehr erforderlich sind – in der Regel, sobald der Sachverhalt abschließend geklärt ist, spätestens jedoch nach 12 Monaten. Du kannst jederzeit die vorzeitige Löschung deiner Daten verlangen, sofern keine gesetzlichen Aufbewahrungspflichten entgegenstehen. Wende dich hierfür einfach per E-Mail an mich.</p>
+        <p class="lang-en" style="margin:0;">Data submitted as part of a support request is deleted as soon as it is no longer required to process your request – generally once the matter has been fully resolved, but no later than 12 months. You may request earlier deletion of your data at any time, unless statutory retention obligations apply. Simply contact me by email.</p>
       </div>
-      <p>Die Angabe deiner E-Mail-Adresse ist freiwillig, aber notwendig, damit ich dir antworten kann. Ohne diese Angabe kann ich deine Anfrage nicht bearbeiten.</p>
+      <p class="lang-de">Die Angabe deiner E-Mail-Adresse ist freiwillig, aber notwendig, damit ich dir antworten kann. Ohne diese Angabe kann ich deine Anfrage nicht bearbeiten.</p>
+      <p class="lang-en">Providing your email address is voluntary but necessary so that I can respond to you. Without it, I cannot process your request.</p>
 
       <form class="contact-form" id="supportForm">
         <div class="form-row">
-          <label for="name">Name <span class="optional">(optional)</span></label>
+          <label for="name"><span class="lang-de">Name</span><span class="lang-en">Name</span> <span class="optional lang-de">(optional)</span><span class="optional lang-en">(optional)</span></label>
           <input type="text" id="name" name="name" autocomplete="name">
         </div>
         <div class="form-row">
-          <label for="email">Deine E-Mail-Adresse</label>
+          <label for="email"><span class="lang-de">Deine E-Mail-Adresse</span><span class="lang-en">Your email address</span></label>
           <input type="email" id="email" name="email" required autocomplete="email">
         </div>
         <div class="form-row">
-          <label for="message">Deine Nachricht</label>
+          <label for="message"><span class="lang-de">Deine Nachricht</span><span class="lang-en">Your message</span></label>
           <textarea id="message" name="message" required></textarea>
         </div>
         <div class="form-submit-row">
-          <button type="submit" class="send-btn">Nachricht senden</button>
-          <p class="form-hint">Öffnet dein E-Mail-Programm mit vorausgefüllter Nachricht an mariuskht@icloud.com</p>
+          <button type="submit" class="send-btn"><span class="lang-de">Nachricht senden</span><span class="lang-en">Send message</span></button>
+          <p class="form-hint">
+            <span class="lang-de">Öffnet dein E-Mail-Programm mit vorausgefüllter Nachricht an mariuskht@icloud.com</span>
+            <span class="lang-en">Opens your email program with a pre-filled message to mariuskht@icloud.com</span>
+          </p>
         </div>
-        <p class="form-status" id="formStatus">Dein E-Mail-Programm sollte sich gerade öffnen. Falls nicht, schreib mir direkt an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>.</p>
+        <p class="form-status" id="formStatus">
+          <span class="lang-de">Dein E-Mail-Programm sollte sich gerade öffnen. Falls nicht, schreib mir direkt an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>.</span>
+          <span class="lang-en">Your email program should be opening now. If not, write to me directly at <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a>.</span>
+        </p>
       </form>
     </section>
 
     <section id="appstore">
       <h2><span class="num">04</span> App Store</h2>
-      <p>Beim Herunterladen und Installieren der App über den Apple App Store verarbeitet <strong style="color: var(--ink);">Apple</strong> als eigenständiger datenschutzrechtlich Verantwortlicher bestimmte Daten (z.&nbsp;B. Apple-ID, Zahlungsdaten, Gerätekennung). Diese Verarbeitung erfolgt ausschließlich durch Apple und unterliegt der <a class="inline" href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener">Datenschutzerklärung von Apple</a>.</p>
-      <p>Ich als Entwickler erhalte hierüber ausschließlich aggregierte, anonymisierte Statistiken (z.&nbsp;B. Downloadzahlen), die keinen Rückschluss auf einzelne Personen zulassen.</p>
+      <p class="lang-de">Beim Herunterladen und Installieren der App über den Apple App Store verarbeitet <strong style="color: var(--ink);">Apple</strong> als eigenständiger datenschutzrechtlich Verantwortlicher bestimmte Daten (z.&nbsp;B. Apple-ID, Zahlungsdaten, Gerätekennung). Diese Verarbeitung erfolgt ausschließlich durch Apple und unterliegt der <a class="inline" href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener">Datenschutzerklärung von Apple</a>.</p>
+      <p class="lang-en">When downloading and installing the app via the Apple App Store, <strong style="color: var(--ink);">Apple</strong> processes certain data (e.g. Apple ID, payment data, device identifier) as an independent controller under data protection law. This processing is carried out exclusively by Apple and is subject to <a class="inline" href="https://www.apple.com/legal/privacy/de-ww/" target="_blank" rel="noopener">Apple's Privacy Policy</a>.</p>
+      <p class="lang-de">Ich als Entwickler erhalte hierüber ausschließlich aggregierte, anonymisierte Statistiken (z.&nbsp;B. Downloadzahlen), die keinen Rückschluss auf einzelne Personen zulassen.</p>
+      <p class="lang-en">As the developer, I only receive aggregated, anonymized statistics through this (e.g. download numbers) that do not allow any conclusions to be drawn about individual persons.</p>
     </section>
 
     <section id="hosting">
-      <h2><span class="num">05</span> Hosting dieser Seite</h2>
-      <p>Diese Datenschutzerklärung wird über <strong style="color: var(--ink);">GitHub Pages</strong> bereitgestellt (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; für EU-Nutzer: GitHub B.V., Prins Bernhardplein 200, Amsterdam, Niederlande).</p>
-      <p>Beim Aufruf dieser Seite verarbeitet GitHub automatisch technische Zugriffsdaten (z.&nbsp;B. IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene URL) in Server-Logfiles, um den technischen Betrieb der Seite zu ermöglichen. Diese Verarbeitung betrifft <strong style="color: var(--ink);">ausschließlich den Aufruf dieser Webseite</strong>, nicht die Nutzung der App selbst.</p>
+      <h2><span class="num">05</span> <span class="lang-de">Hosting dieser Seite</span><span class="lang-en">Hosting of this website</span></h2>
+      <p class="lang-de">Diese Datenschutzerklärung wird über <strong style="color: var(--ink);">GitHub Pages</strong> bereitgestellt (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; für EU-Nutzer: GitHub B.V., Prins Bernhardplein 200, Amsterdam, Niederlande).</p>
+      <p class="lang-en">This privacy policy is provided via <strong style="color: var(--ink);">GitHub Pages</strong> (GitHub, Inc., 88 Colin P. Kelly Jr. Street, San Francisco, CA 94107, USA; for EU users: GitHub B.V., Prins Bernhardplein 200, Amsterdam, Netherlands).</p>
+      <p class="lang-de">Beim Aufruf dieser Seite verarbeitet GitHub automatisch technische Zugriffsdaten (z.&nbsp;B. IP-Adresse, Datum und Uhrzeit des Zugriffs, aufgerufene URL) in Server-Logfiles, um den technischen Betrieb der Seite zu ermöglichen. Diese Verarbeitung betrifft <strong style="color: var(--ink);">ausschließlich den Aufruf dieser Webseite</strong>, nicht die Nutzung der App selbst.</p>
+      <p class="lang-en">When this page is accessed, GitHub automatically processes technical access data (e.g. IP address, date and time of access, URL accessed) in server log files to enable the technical operation of the site. This processing relates <strong style="color: var(--ink);">solely to accessing this website</strong>, not to use of the app itself.</p>
       <div class="card">
-        <h3>Rechtsgrundlage</h3>
-        <p style="margin:0;">Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am technisch fehlerfreien und sicheren Betrieb der Webseite). Weitere Informationen: <a class="inline" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a></p>
+        <h3><span class="lang-de">Rechtsgrundlage</span><span class="lang-en">Legal basis</span></h3>
+        <p class="lang-de" style="margin:0;">Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am technisch fehlerfreien und sicheren Betrieb der Webseite). Weitere Informationen: <a class="inline" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a></p>
+        <p class="lang-en" style="margin:0;">Art. 6(1)(f) GDPR (legitimate interest in the technically flawless and secure operation of the website). Further information: <a class="inline" href="https://docs.github.com/site-policy/privacy-policies/github-privacy-statement" target="_blank" rel="noopener">GitHub Privacy Statement</a></p>
+      </div>
+    </section>
+
+    <section id="bildnachweise">
+      <h2><span class="num">06</span> <span class="lang-de">Bildnachweise</span><span class="lang-en">Image credits</span></h2>
+      <p class="lang-de">Die in der App verwendeten Kontinent-Silhouetten stammen von <a class="inline" href="https://silhouettegarden.com" target="_blank" rel="noopener">silhouettegarden.com</a> und werden unter Namensnennung des Anbieters genutzt.</p>
+      <p class="lang-en">The continent silhouettes used in the app are sourced from <a class="inline" href="https://silhouettegarden.com" target="_blank" rel="noopener">silhouettegarden.com</a> and are used with attribution to the provider.</p>
+      <div class="card">
+        <h3><span class="lang-de">Quelle</span><span class="lang-en">Source</span></h3>
+        <p style="margin:0;">Silhouettes © <a class="inline" href="https://silhouettegarden.com" target="_blank" rel="noopener">silhouettegarden.com</a></p>
       </div>
     </section>
 
     <section id="rechte">
-      <h2><span class="num">06</span> Rechte der Nutzer</h2>
-      <p>Bezüglich der über das Support-Kontaktformular verarbeiteten Daten stehen dir die Rechte auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch (Art. 21 DSGVO) zu. Da die Verarbeitung teilweise auf deiner Einwilligung beruht, kannst du diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
-      <p>Da im Rahmen der reinen App-Nutzung keine personenbezogenen Daten durch mich verarbeitet werden, laufen die Betroffenenrechte insoweit praktisch ins Leere.</p>
-      <p>Unabhängig davon hast du das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren, z.&nbsp;B. bei der für Rheinland-Pfalz zuständigen Landesbeauftragten für den Datenschutz.</p>
+      <h2><span class="num">07</span> <span class="lang-de">Rechte der Nutzer</span><span class="lang-en">Your rights</span></h2>
+      <p class="lang-de">Bezüglich der über das Support-Kontaktformular verarbeiteten Daten stehen dir die Rechte auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch (Art. 21 DSGVO) zu. Da die Verarbeitung teilweise auf deiner Einwilligung beruht, kannst du diese jederzeit mit Wirkung für die Zukunft widerrufen.</p>
+      <p class="lang-en">With regard to the data processed via the support contact form, you have the right to access (Art. 15 GDPR), rectification (Art. 16 GDPR), erasure (Art. 17 GDPR), restriction of processing (Art. 18 GDPR), data portability (Art. 20 GDPR), and objection (Art. 21 GDPR). As processing is partly based on your consent, you may withdraw it at any time with effect for the future.</p>
+      <p class="lang-de">Da im Rahmen der reinen App-Nutzung keine personenbezogenen Daten durch mich verarbeitet werden, laufen die Betroffenenrechte insoweit praktisch ins Leere.</p>
+      <p class="lang-en">As no personal data is processed by me in the course of mere app usage, these rights are, in practice, not applicable in that respect.</p>
+      <p class="lang-de">Unabhängig davon hast du das Recht, dich bei einer Datenschutzaufsichtsbehörde zu beschweren, z.&nbsp;B. bei der für Rheinland-Pfalz zuständigen Landesbeauftragten für den Datenschutz.</p>
+      <p class="lang-en">Regardless of the above, you have the right to lodge a complaint with a data protection supervisory authority, e.g. the data protection authority responsible for Saxony.</p>
     </section>
 
     <section id="aenderungen">
-      <h2><span class="num">07</span> Änderungen dieser Erklärung</h2>
-      <p>Sollte sich die Datenverarbeitung der App oder dieser Webseite zukünftig ändern (z.&nbsp;B. durch Hinzufügen von iCloud-Sync, Push-Benachrichtigungen oder Werbung), wird diese Erklärung entsprechend angepasst. Das Datum der letzten Aktualisierung findest du oben auf dieser Seite.</p>
+      <h2><span class="num">08</span> <span class="lang-de">Änderungen dieser Erklärung</span><span class="lang-en">Changes to this policy</span></h2>
+      <p class="lang-de">Sollte sich die Datenverarbeitung der App oder dieser Webseite zukünftig ändern (z.&nbsp;B. durch Hinzufügen von iCloud-Sync, Push-Benachrichtigungen oder Werbung), wird diese Erklärung entsprechend angepasst. Das Datum der letzten Aktualisierung findest du oben auf dieser Seite.</p>
+      <p class="lang-en">Should the data processing of the app or this website change in the future (e.g. through the addition of iCloud sync, push notifications, or advertising), this policy will be updated accordingly. The date of the last update can be found at the top of this page.</p>
     </section>
 
     <section id="kontakt">
-      <h2><span class="num">08</span> Kontakt</h2>
-      <p>Bei Fragen zu dieser Datenschutzerklärung erreichst du mich unter <a class="inline" href="mailto:mariuskht@pm.me">mariuskht@pm.me</a>. Für Support-Anfragen zur App kannst du das <a class="inline" href="#support">Kontaktformular weiter oben</a> nutzen oder direkt eine E-Mail an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a> schreiben.</p>
+      <h2><span class="num">09</span> <span class="lang-de">Kontakt</span><span class="lang-en">Contact</span></h2>
+      <p class="lang-de">Bei Fragen zu dieser Datenschutzerklärung erreichst du mich unter <a class="inline" href="mailto:mariuskht@pm.me">mariuskht@pm.me</a>. Für Support-Anfragen zur App kannst du das <a class="inline" href="#support">Kontaktformular weiter oben</a> nutzen oder direkt eine E-Mail an <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a> schreiben.</p>
+      <p class="lang-en">If you have questions about this privacy policy, you can reach me at <a class="inline" href="mailto:mariuskht@pm.me">mariuskht@pm.me</a>. For app support requests, you can use the <a class="inline" href="#support">contact form above</a> or email <a class="inline" href="mailto:mariuskht@icloud.com">mariuskht@icloud.com</a> directly.</p>
     </section>
 
   </main>
 </div>
 
 <footer>
-  Flaggit! · Datenschutzerklärung · Stand 11. Juli 2026
+  <span class="lang-de">Flaggit! · Datenschutzerklärung · Stand 14. Juli 2026</span>
+  <span class="lang-en">Flaggit! · Privacy Policy · Last updated July 14, 2026</span>
 </footer>
 
 <script>
+  function setLang(lang) {
+    document.documentElement.setAttribute('data-lang', lang);
+    document.querySelectorAll('.lang-toggle button').forEach(function (b) {
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+  }
+
   document.getElementById('supportForm').addEventListener('submit', function (e) {
     e.preventDefault();
 
